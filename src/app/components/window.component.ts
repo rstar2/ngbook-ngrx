@@ -1,4 +1,4 @@
-import { ElementRef, Component, ChangeDetectionStrategy } from "@angular/core";
+import { ElementRef, Component, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
 import { Store } from "@ngrx/store";
 
 import { Thread, User, Message } from "../model";
@@ -62,11 +62,15 @@ import { getCurrentThread, getCurrentUser } from "../store/reducers";
 })
 export class ChatWindowComponent {
   currentThread: Thread;
-  draftMessage: {text: string};
   currentUser: User;
 
+  draftMessage: {text: string};
+
   constructor(private store: Store<AppState>,
-              private el: ElementRef) {
+              private el: ElementRef,
+              private changeDetectorRef: ChangeDetectorRef) {
+    // we use a different approach here- subscribe to the whole state
+    // this is not better than the different selectors but just to show
     store.subscribe((state) => this.updateState(state));
     this.draftMessage = {text: ''};
   }
@@ -75,6 +79,7 @@ export class ChatWindowComponent {
     this.currentThread = getCurrentThread(state);
     this.currentUser = getCurrentUser(state);
     this.scrollToBottom();
+    this.changeDetectorRef.markForCheck();
   }
 
   scrollToBottom(): void {
