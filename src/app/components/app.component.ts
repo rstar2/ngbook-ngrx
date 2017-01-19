@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from "@ngrx/store";
 
-
 import { AppState } from "../store/state";
 
 import ChatExampleData from "../ChatExampleData";
@@ -16,6 +15,6 @@ import ChatExampleData from "../ChatExampleData";
 })
 export class AppComponent {
   constructor(private store: Store<AppState>) {
-    //ChatExampleData(store);
+    ChatExampleData(store);
   }
 }

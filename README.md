@@ -1,4 +1,4 @@
-# NgBook2Redux
+# NgBook2NGRX (same app sa NgBook2REDUX)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 

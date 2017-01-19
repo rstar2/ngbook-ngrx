@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class NgBook2ReduxPage {
+export class NgBook2NgrxPage {
   navigateTo() {
     return browser.get('/');
   }

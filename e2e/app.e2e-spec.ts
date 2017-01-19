@@ -1,10 +1,10 @@
-import { NgBook2ReduxPage } from './app.po';
+import { NgBook2NgrxPage } from './app.po';
 
-describe('ng-book2-redux App', function() {
-  let page: NgBook2ReduxPage;
+describe('ng-book2-ngrx App', function() {
+  let page: NgBook2NgrxPage;
 
   beforeEach(() => {
-    page = new NgBook2ReduxPage();
+    page = new NgBook2NgrxPage();
   });
 
   it('should display message saying app works', () => {
