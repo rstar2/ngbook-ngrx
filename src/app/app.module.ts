@@ -5,9 +5,10 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from "@ngrx/store";
 
-import { reducer as appStateReducer } from "./store/app-store";
+import appReducer from "./store/app-store";
 
 import { ComponentsModule, AppComponent } from "./components";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 
 @NgModule({
@@ -25,7 +26,19 @@ import { ComponentsModule, AppComponent } from "./components";
      * meta-reducer. This returns all providers for an @ngrx/store
      * based application.
      */
-    StoreModule.provideStore(appStateReducer),
+    StoreModule.provideStore(appReducer),
+
+    /**
+     * Store devtools instrument the store retaining past versions of state
+     * and recalculating new states. This enables powerful time-travel
+     * debugging.
+     *
+     * To use the debugger, install the Redux Devtools extension for either
+     * Chrome or Firefox
+     *
+     * See: https://github.com/zalmoxisus/redux-devtools-extension
+     */
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   bootstrap: [AppComponent]
 })

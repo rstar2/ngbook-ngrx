@@ -4,9 +4,9 @@ import { ThreadsReducer } from './threads-reducer';
 export * from './user-reducer';
 export * from './threads-reducer';
 
-const appReducer = {
+const appReducers = {
   user: UserReducer,
   threads: ThreadsReducer
 };
 
-export default appReducer;
+export default appReducers;

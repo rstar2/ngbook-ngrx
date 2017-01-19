@@ -24,9 +24,9 @@ const COMPONENTS = [
 
 @NgModule({
   imports: [
+    CommonModule,
     FormsModule,
 
-    CommonModule,
     PipesModule,
   ],
   declarations: COMPONENTS,

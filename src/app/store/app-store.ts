@@ -1,23 +1,20 @@
-import { ActionReducer, combineReducers } from "@ngrx/store";
+import { ActionReducer, combineReducers, Action } from "@ngrx/store";
 import { compose } from "@ngrx/core";
 import { storeFreeze } from "ngrx-store-freeze";
 
 import { environment } from "../../environments/environment";
 
 import { AppState } from "./state";
-import appReducer from "./reducers";
+import appReducers from "./reducers";
 
+export default (state: AppState, action: Action): AppState => {
+  let reducer: ActionReducer<AppState>;
 
-let actionReducer: ActionReducer<AppState>;
+  if (environment.production) {
+    reducer = compose(storeFreeze, combineReducers)(appReducers);
+  } else {
+    reducer = combineReducers(appReducers);
+  }
 
-if (environment.production) {
-  actionReducer = compose(storeFreeze, combineReducers)(appReducer);
+  return reducer(state, action);
 }
-else {
-  actionReducer = combineReducers(appReducer);
-}
-
-export function reducer(state: any, action: any) {
-  return actionReducer(state, action);
-}
-
